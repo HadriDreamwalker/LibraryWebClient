@@ -1,0 +1,49 @@
+<ol class="breadcrumb">
+	<li><a href="#/">Home</a></li>
+	<li><a href="#/authors">Authors</a></li>
+	<li class="active">{{author.name}}</li>
+</ol>
+
+<div class="row">
+	<div class="col-md-2">
+		<img src="http://www.indianahistory.org/ihs/our-collections/digital-image-collections/lincoln-collections/copy_of_gardner.jpg/image_thumb" 
+		alt="Photo de l'auteur"
+		class="img-thumbmail"/>
+	</div>
+	<div class="col-md-5">
+		<strong ng-hide="modify">{{author.name}}</strong>
+			<input class="form-control" ng-model="authorNew.name" name="name" ng-show="modify"/>
+		<div>
+			<span ng-hide="modify">{{author.birthYear}} - {{author.deathYear | death}}</span>
+			<div class="dateRange" ng-show="modify">
+				<input class="form-control" ng-model="authorNew.birthYear" name="birthYear"/>
+				 - 
+				<input class="form-control" ng-model="authorNew.deathYear" name="deathYear"/>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-5">
+		<div class="pull-right" ng-show="!modify && !delete">
+			<button type="button" class="btn btn-primary" ng-click="preModifyAuthor()">Modify</button>
+			<button type="button" class="btn btn-danger" ng-click="delete=true">Delete</button>
+		</div>
+		<div class="bg-danger pull-right" ng-show="delete">
+			You are going to make the author die
+			<button type="button" class="btn btn-link" ng-click="deleteAuthor()">Validate</button>
+			|
+			<button type="button" class="btn btn-link" ng-click="delete=false">Cancel</button>
+		</div>
+		<div class="bg-info pull-right" ng-show="modify">
+			You are going to make the author different
+			<button type="button" class="btn btn-link" ng-click="modifyAuthor()">Validate</button>
+			|
+			<button type="button" class="btn btn-link" ng-click="modify=false">Cancel</button>
+		</div>
+	</div>
+</div>
+
+<div class="raw">
+	<div class="col-md-12">
+		<h1>Biographie</h1>
+	</div>
+</div>

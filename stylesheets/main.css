@@ -1,0 +1,8 @@
+.dateRange input {
+	display: inline-block;
+	width: auto;
+}
+
+.dateRange label {
+	display: block;
+}

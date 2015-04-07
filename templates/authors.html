@@ -1,0 +1,29 @@
+<ol class="breadcrumb">
+	<li><a href="#/">Home</a></li>
+	<li class="active">Authors</li>
+</ol>
+
+<h1>Authors List</h1>
+
+<button class="btn btn-default" ng-click="showForm()">Add</button>
+
+<form ng-show="form" ng-submit="addAuthor()">
+	<div class="form-group">
+		<label for="name">Name</label>
+		<input class="form-control" ng-model="author.name" id="name" placeholder="e.g. Isaac Asimov"/>
+	</div>
+	<div class="dateRange form-group">
+		<label>Life</label>
+		<input class="form-control" ng-model="author.birthYear" id="birthYear" type="number" placeholder="Birth Year"/>
+		 - 
+		<input class="form-control" ng-model="author.deathYear" id="deathYear" type="number" placeholder="Death Year"/>
+	</div>
+
+	<button class="btn btn-primary">Validate</button>
+</form>
+
+<ul class="list-group">
+	<li class="list-group-item" ng-repeat="author in authors">
+		<a href="#/author/{{author._id}}">{{author.name}}</a>
+	</li>
+</ul>

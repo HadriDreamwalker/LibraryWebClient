@@ -1,0 +1,22 @@
+<ol class="breadcrumb">
+	<li><a href="#/">Home</a></li>
+	<li class="active">Publishers</li>
+</ol>
+
+<h1>Publishers List</h1>
+
+<button class="btn btn-default" ng-click="form = !form">Add</button>
+
+<form ng-show="form" ng-submit="addPublisher()">
+	<div class="form-group">
+		<label for="name">Name</label>
+		<input class="form-control" ng-model="publisher.name" placeholder="e.g. Hachette"/>
+	</div>
+
+</form>
+
+<ul class="list-group">
+	<li class="list-group-item" ng-repeat="publisher in publishers">
+		<a href="#">{{publisher.name}}</a>
+	</li>
+</ul>
