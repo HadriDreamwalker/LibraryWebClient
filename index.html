@@ -3,14 +3,14 @@
 	<head>
 		<meta charset="utf-8"/>
 		<title>Library Webclient</title>
-		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"></link>
+		<link rel="stylesheet" href="bower_components/bootswatch-dist/css/bootstrap.css"></link>
 		<link rel="stylesheet" href="stylesheets/main.css"></link>
 	</head>
 	<body ng-app="Library">
 		<div class="container-fluid">
 			<ng-view ></ng-view>
 		</div>
-			
+		
 		
 
 		<script src="bower_components/angular/angular.js"></script>
@@ -23,7 +23,18 @@
 		<script src="app/controllers/author.controller.js"></script>
 
 		<script src="app/controllers/publishers.controller.js"></script>
+		<script src="app/controllers/publisher.controller.js"></script>
+
+		<script src="app/controllers/collections.controller.js"></script>
+		<script src="app/controllers/collection.controller.js"></script>	
+
+		<script src="app/controllers/series.controller.js"></script>
+		<script src="app/controllers/serie.controller.js"></script>	
+
+		<script src="app/controllers/stories.controller.js"></script>
+		<script src="app/controllers/story.controller.js"></script>
 
 		<script src="app/filters/death.filter.js"></script>
+		<script src="app/filters/finished.filter.js"></script>
 	</body>
 </html>

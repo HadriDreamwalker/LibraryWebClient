@@ -1,0 +1,29 @@
+<ol class="breadcrumb">
+	<li><a href="#/">Home</a></li>
+	<li class="active">Series</li>
+</ol>
+
+<h1>Series List</h1>
+
+<button class="btn btn-default" ng-click="form = !form">Add</button>
+
+<form ng-show="form" ng-submit="addSerie()">
+	<div class="form-group">
+		<label for="name">Name:</label>
+		<input class="form-control" ng-model="serie.name" placeholder="e.g. Les annales du Disque-Monde"/>
+		<div class="checkbox">
+			<label for="finished"><input type="checkbox" ng-model="serie.finished"/>Finished</label>
+		</div>
+		<label for="nbTomes">Number of tomes:</label>
+		<input class="form-control" type="number" ng-model="serie.nbTomes" placeholder="Number of tomes"/>
+		<label for="books">Books in:</label>
+		<span class="bg-info">TODO</span>
+	</div>
+	<button class="btn btn-primary" type="submit">Confirm</button>
+</form>
+
+<ul class="list-group">
+	<li class="list-group-item" ng-repeat="serie in series">
+		<a href="#/serie/{{serie._id}}">{{serie.name}}</a>
+	</li>
+</ul>

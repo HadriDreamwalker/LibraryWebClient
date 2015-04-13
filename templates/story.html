@@ -1,0 +1,55 @@
+<ol class="breadcrumb">
+	<li><a href="#/">Home</a></li>
+	<li><a href="#/stories/">Stories</a></li>
+	<li class="active">{{story.name}}</li>
+</ol>
+
+<div class="row">
+	<div class="md-col-5">
+		<img src="http://static.tumblr.com/12581514f7382b1b8d5726862fee83e8/mmxd0pc/ceGmt8o5v/tumblr_static_hitchhikersguidewhitess.png" alt="Logo de l'histoire" class="img-thumbnail"/>
+	</div>
+	<div class="md-col-5">
+		<strong ng-hide="modify">{{story.name}}</strong>
+		<input ng-show="modify" type="text" ng-model="storyNew.name"/>
+
+		<label>Type:</label> 
+		<span ng-hide="modify">{{story.type}}</span>
+		<div ng-show="modify">
+			<input type="radio" ng-model="story.type" value="short"/> Short story
+			<input type="radio" ng-model="story.type" value="novel"/> Novel
+		</div>
+		<div ng-hide="modify">
+			<ul class="list-group" ng-hide="modify">
+				<li class="list-group-item"  ng-repeat="author in story.authors">
+					<a href="#/author/{{author._id}}">{{author.name}}</a>
+				</li>
+			</ul>
+		</div>
+		<div ng-show="modify">
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="author in authorsList">
+					{{author.name}}
+					<input type="checkbox" name="author{{$index}}" ng-model="author.checked"/>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-md-5">
+		<div class="pull-right" ng-show="!modify && !delete">
+			<button type="button" class="btn btn-primary" ng-click="preModifyStory()">Modify</button>
+			<button type="button" class="btn btn-danger" ng-click="preDeleteStory()">Delete</button>
+		</div>
+		<div class="bg-danger pull-right" ng-show="delete">
+			You are going to make this story disappear
+			<button type="button" class="btn btn-link" ng-click="deleteStory()">Validate</button>
+			|
+			<button type="button" class="btn btn-link" ng-click="delete=false">Cancel</button>
+		</div>
+		<div class="bg-info pull-right" ng-show="modify">
+			You are going to change this story forever
+			<button type="button" class="btn btn-link" ng-click="modifyStory()">Validate</button>
+			|
+			<button type="button" class="btn btn-link" ng-click="modify=false">Cancel</button>
+		</div>
+	</div>
+</div>

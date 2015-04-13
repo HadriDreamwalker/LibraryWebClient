@@ -1,0 +1,31 @@
+<ol class="breadcrumb">
+	<li><a href="#/">Home</a></li>
+	<li class="active">Collections</li>
+</ol>
+
+<h1>Collections List</h1>
+
+<button class="btn btn-default" ng-click="form = !form">Add</button>
+
+<form ng-show="form" ng-submit="addCollection()">
+	<div class="form-group">
+		<label for="name">Name</label>
+		<input class="form-control" ng-model="collection.name" placeholder="e.g. Le Rayon Fantastique"/>
+		<button class="btn btn-link" type="button" ng-click="showPublishersList = !showPublishersList">Add publishers</button>
+		<div ng-show="showPublishersList">
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="publisher in publishersList">
+					{{publisher.name}}
+					<input type="checkbox" name="collectionNb{{$index}}" ng-model="publisher.checked"/>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<button class="btn btn-primary" type="submit">Confirm</button>
+</form>
+
+<ul class="list-group">
+	<li class="list-group-item" ng-repeat="collection in collections">
+		<a href="#/collection/{{collection._id}}">{{collection.name}}</a>
+	</li>
+</ul>

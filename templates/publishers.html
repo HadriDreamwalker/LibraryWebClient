@@ -12,11 +12,11 @@
 		<label for="name">Name</label>
 		<input class="form-control" ng-model="publisher.name" placeholder="e.g. Hachette"/>
 	</div>
-
+	<button class="btn btn-primary">Confirm</button>
 </form>
 
 <ul class="list-group">
 	<li class="list-group-item" ng-repeat="publisher in publishers">
-		<a href="#">{{publisher.name}}</a>
+		<a href="#/publisher/{{publisher._id}}">{{publisher.name}}</a>
 	</li>
 </ul>

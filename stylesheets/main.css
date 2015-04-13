@@ -6,3 +6,8 @@
 .dateRange label {
 	display: block;
 }
+
+.img-thumbnail {
+	width: 140px;
+	height: 180px;
+}

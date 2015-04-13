@@ -1,0 +1,55 @@
+<ol class="breadcrumb">
+	<li><a href="#/">Home</a></li>
+	<li><a href="#/collections">Collections</a></li>
+	<li class="active">{{collection.name}}</li>
+</ol>
+
+<div class="row">
+	<div class="md-col-2">
+		<img src="https://www.nedcc.org/assets/media/images/books-stacked-leather.jpg" alt="Logo de la collection" class="img-thumbnail"/>
+	</div>
+	<div class="md-col-5">
+		<strong ng-hide="modify">{{collection.name}}</strong>
+		<input class="form-controle" ng-show="modify" ng-model="collectionNew.name" name="name"/>
+		<div ng-hide="modify">
+			<ul class="list-group" ng-hide="modify">
+				<li class="list-group-item"  ng-repeat="publisher in collection.publishers">
+					<a href="#/publisher/{{publisher._id}}">{{publisher.name}}</a>
+				</li>
+			</ul>
+		</div>
+		<div ng-show="modify">
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="publisher in publishersList">
+					{{publisher.name}}
+					<input type="checkbox" name="collectionNb{{$index}}" ng-model="publisher.checked"/>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="md-col-5">
+		<div class="pull-right" ng-show="!modify && !delete">
+			<button type="button" class="btn btn-primary" ng-click="preModifyCollection()">Modify</button>
+			<button type="button" class="btn btn-danger" ng-click="preDeleteCollection()">Delete</button>
+		</div>
+		<div class="bg-danger pull-right" ng-show="delete">
+			You are going to throw this collection into a black hole
+			<button type="button" class="btn btn-link" ng-click="deleteCollection()">Validate</button>
+			|
+			<button type="button" class="btn btn-link" ng-click="delete = false">Cancel</button>
+		</div>
+		<div class="bg-info pull-right" ng-show="modify">
+			You are going to make some serious modifications to this collection
+			<button type="button" class="btn btn-link" ng-click="modifyCollection()">Validate</button>
+			|
+			<button type="button" class="btn btn-link" ng-click="modify = false">Cancel</button>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="md-col-12">
+		<h1>Books published in this collection</h1>
+		<span class="bg-warning">TODO</span>
+	</div>
+</div>

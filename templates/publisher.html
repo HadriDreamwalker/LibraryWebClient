@@ -1,0 +1,40 @@
+<ol class="breadcrumb">
+	<li><a href="#/">Home</a></li>
+	<li><a href="#/publishers">Publishers</a></li>
+	<li class="active">{{publisher.name}}</li>
+</ol>
+
+<div class="row">
+	<div class="col-md-2">
+		<img src="http://www.48h-du-polar.fr/wp-content/uploads/2013/03/logofn.jpg" alt="Logo de l'éditeur" class="img-thumbnail"/>
+	</div>
+	<div class="col-md-5">
+		<strong ng-hide="modify">{{publisher.name}}</strong>
+			<input class="form-control" ng-model="publisherNew.name" name="name" ng-show="modify"/>
+	</div>
+	<div class="col-md-5">
+		<div class="pull-right" ng-show="!modify && !delete">
+			<button type="button" class="btn btn-primary" ng-click="preModifyPublisher()">Modify</button>
+			<button type="button" class="btn btn-danger" ng-click="preDeletePublisher()">Delete</button>
+		</div>
+		<div class="bg-danger pull-right" ng-show="delete">
+			You are going to make this publisher disappear
+			<button type="button" class="btn btn-link" ng-click="deletePublisher()">Validate</button>
+			|
+			<button type="button" class="btn btn-link" ng-click="delete=false">Cancel</button>
+		</div>
+		<div class="bg-info pull-right" ng-show="modify">
+			You are going to change this publisher forever
+			<button type="button" class="btn btn-link" ng-click="modifyPublisher()">Validate</button>
+			|
+			<button type="button" class="btn btn-link" ng-click="modify=false">Cancel</button>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<h1>Liste des collections</h1>
+		<span class="bg-warning">TODO</span>
+	</div>
+</div>

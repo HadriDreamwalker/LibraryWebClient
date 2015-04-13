@@ -1,0 +1,43 @@
+<ol class="breadcrumb">
+	<li><a href="#/">Home</a></li>
+	<li><a href="#/series">Series</a></li>
+	<li class="active">{{serie.name}}</li>
+</ol>
+
+<div class="row">
+	<div class="col-md-2">
+		<img src="http://images.gibertjoseph.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/b/518/9782841722518_4_75.jpg" alt="Logo de la série" class="img-thumbnail"/>
+	</div>
+	<div class="col-md-5">
+		<strong ng-hide="modify">{{serie.name}}</strong>
+		<input ng-show="modify" type="text" ng-model="serieNew.name"/>
+		<div>
+			<span ng-hide="modify">{{serie.finished | finished}}</span><br/>
+			<label ng-show="modify"><input type="checkbox" ng-model="serieNew.finished"/>Finished</label>
+		</div>
+		<div>
+			<label>Tomes: </label>
+			<span ng-hide="modify">{{serie.nbTomes}}</span>
+			<input ng-show="modify" type="number" ng-model="serieNew.nbTomes"/>
+		</div>
+		
+	</div>
+	<div class="col-md-5">
+		<div class="pull-right" ng-show="!modify && !delete">
+			<button type="button" class="btn btn-primary" ng-click="preModifySerie()">Modify</button>
+			<button type="button" class="btn btn-danger" ng-click="preDeleteSerie()">Delete</button>
+		</div>
+		<div class="bg-danger pull-right" ng-show="delete">
+			You are going to make this serie disappear
+			<button type="button" class="btn btn-link" ng-click="deleteSerie()">Validate</button>
+			|
+			<button type="button" class="btn btn-link" ng-click="delete=false">Cancel</button>
+		</div>
+		<div class="bg-info pull-right" ng-show="modify">
+			You are going to change this serie forever
+			<button type="button" class="btn btn-link" ng-click="modifySerie()">Validate</button>
+			|
+			<button type="button" class="btn btn-link" ng-click="modify=false">Cancel</button>
+		</div>
+	</div>
+</div>

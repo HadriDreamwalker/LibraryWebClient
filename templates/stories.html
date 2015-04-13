@@ -1,0 +1,35 @@
+<ol class="breadcrumb">
+	<li><a href="#/">Home</a></li>
+	<li class="active">Stories</li>
+</ol>
+
+<h1>Stories List</h1>
+
+<button class="btn btn-default" ng-click="form = !form">Add</button>
+
+<form ng-show="form" ng-submit="addStory()">
+	<div class="form-group">
+		<label>Name:</label>
+		<input class="form-control" ng-model="story.name" placeholder="e.g. Fondation"/>
+		<label>Type:</label>
+		<input type="radio" ng-model="story.type" value="short"/> Short story
+		<input type="radio" ng-model="story.type" value="novel"/> Novel
+
+		<button type="button" class="btn btn-link" ng-click="showAuthorsList = !showAuthorsList">Add author(s)</button>
+		<div ng-show="showAuthorsList">
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="author in authorsList">
+					{{author.name}}
+					<input type="checkbox" name="author{{$index}}" ng-model="author.checked"/>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<button class="btn btn-primary" type="submit">Confirm</button>
+</form>
+
+<ul class="list-group">
+	<li class="list-group-item" ng-repeat="story in stories">
+		<a href="#/story/{{story._id}}">{{story.name}}</a>
+	</li>
+</ul>
