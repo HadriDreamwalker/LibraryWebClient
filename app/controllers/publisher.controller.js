@@ -1,5 +1,5 @@
 angular.module("Library")
-.controller("PublisherController", ["$scope", "$routeParams", "$http", "$location", function($scope, $routeParams, $http, $location) {
+.controller("PublisherController", ["$scope", "$routeParams", "$http", "$location", "Api", function($scope, $routeParams, $http, $location, Api) {
 	$scope.publisher = null;
 	var id = $routeParams.id;
 
@@ -13,7 +13,7 @@ angular.module("Library")
 	}
 
 	$scope.modifyPublisher = function() {
-		$http.put("http://192.168.2.10:8080/v1/publishers/" + id, $scope.publisherNew)
+		Api.putPublisher(id, $scope.publisherNew)
 			.success(function(publisher) {
 				$scope.publisher = publisher;
 				$scope.modify = false;
@@ -28,7 +28,7 @@ angular.module("Library")
 	}
 
 	$scope.deletePublisher = function() {
-		$http.delete("http://192.168.2.10:8080/v1/publishers/" + id)
+		Api.deletePublisher(id)
 			.success(function() {
 				$location.path("/publishers");
 			})
@@ -37,7 +37,7 @@ angular.module("Library")
 			})
 	}
 
-	$http.get("http://192.168.2.10:8080/v1/publishers/" + id)
+	Api.getPublisher(id)
 		.success(function(publisher) {
 			$scope.publisher = publisher;
 		})

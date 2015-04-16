@@ -3,9 +3,7 @@ angular.module("Library")
 	$scope.form = false;
 	$scope.series = null;
 
-	
-
-	$http.get("http://192.168.2.10:8080/v1/series")
+	Api.getSeries()
 		.success(function(series) {
 			$scope.series = series;
 		})

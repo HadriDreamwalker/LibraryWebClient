@@ -13,7 +13,7 @@ angular.module("Library")
 			return item._id;
 		});
 
-		$http.post("http://192.168.2.10:8080/v1/stories/", $scope.story)
+		Api.postStory($scope.Story)
 			.success(function (story) {
 				$scope.stories.push(story);
 			})
@@ -22,7 +22,7 @@ angular.module("Library")
 			})
 	};
 
-	$http.get("http://192.168.2.10:8080/v1/stories/")
+	Api.getStorie()
 		.success(function (stories) {
 			$scope.stories = stories;
 		})
@@ -30,7 +30,7 @@ angular.module("Library")
 			console.error(reason);
 		})
 
-	$http.get("http://192.168.2.10:8080/v1/authors/")
+	Api.getAuthors()
 		.success(function (authors) {
 			$scope.authorsList = authors;
 		})

@@ -1,5 +1,5 @@
 angular.module("Library")
-.controller('AuthorController', ['$scope', '$routeParams', '$http', "$location", function($scope, $routeParams, $http, $location) {
+.controller('AuthorController', ['$scope', '$routeParams', '$http', "$location", "Api", function ($scope, $routeParams, $http, $location, Api) {
 	$scope.author = null;
 	var id = $routeParams.id;
 
@@ -13,14 +13,14 @@ angular.module("Library")
 	}
 	
 	$scope.deleteAuthor = function(){
-		$http.delete("http://192.168.2.10:8080/v1/authors/" + id)
+		Api.deleteAuthor(id)
 			.success(function(){
 				$location.path("/authors");
 			})
 	}
 
 	$scope.modifyAuthor = function() {
-		$http.put("http://192.168.2.10:8080/v1/authors/" + id, $scope.authorNew)
+		Api.putAuthor(id, $scope.authorNew)
 			.success(function(author){
 				$scope.author = author;
 				$scope.modify = false;
@@ -30,7 +30,7 @@ angular.module("Library")
 			})
 	}
 
-	$http.get("http://192.168.2.10:8080/v1/authors/" + id)
+	Api.getAuthor(id)
 		.success(function(author) {
 			$scope.author = author;
 		})

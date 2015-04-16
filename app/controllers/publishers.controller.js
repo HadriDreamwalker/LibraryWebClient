@@ -1,10 +1,10 @@
 angular.module("Library")
-.controller('PublishersController', ['$scope', '$http', function($scope, $http) {
+.controller('PublishersController', ['$scope', '$http', 'Api', function ($scope, $http, Api) {
 	$scope.form = false;
 	$scope.publishers = []
 	$scope.publisher = {};
 	
-	$http.get("http://192.168.2.10:8080/v1/publishers")
+	Api.getPublishers()
 		.success(function(publishers) {
 			$scope.publishers = publishers;
 		})
@@ -13,7 +13,7 @@ angular.module("Library")
 		})
 
 	$scope.addPublisher = function () {
-		$http.post("http://192.168.2.10:8080/v1/publishers", $scope.publisher)
+		Api.postPublisher($scope.publisher)
 			.success(function(publisher) {
 				$scope.publishers.push(publisher);
 				$scope.publisher = {};

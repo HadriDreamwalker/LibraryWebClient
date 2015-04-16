@@ -1,0 +1,53 @@
+<ol class="breadcrumb">
+	<li><a href="#/">Home</a></li>
+	<li class="active">Books</li>
+</ol>
+
+<h1>Books List</h1>
+
+<button class="btn btn-default">Add</button>
+
+<form>
+	<div>
+		<div>
+			<label>Name:</label>
+			<input type="text" for="name" placeholder="e.g. Avant l'Eden"/>
+		</div>
+		<div>
+			<label>Author(s): </label>
+			<span>Arhtur C. Clarke</span>
+			<button class="btn btn-link" type="button">Add author(s)</button>
+			<div>
+				<ul class="list-group">
+					<li class="list-group-item"><input type="checkbox" checked="true">Arthur C. Clarke</li>
+					<li class="list-group-item"><input type="checkbox">Isaac Asimov</li>
+					<li class="list-group-item"><input type="checkbox">H.P. Lovecraft</li>
+				</ul>
+			</div>
+		</div>
+		<div>
+			<label>Publisher(s): </label>
+			<span>Hachette</span>
+			<button class="btn btn-link" type="button">Add publisher(s)</button>
+			<div>
+				<ul class="list-group">
+					<li class="list-group-item"><input type="checkbox">Gallimard</li>
+					<li class="list-group-item"><input type="checkbox" checked="true">Hachette</li>
+					<li class="list-group-item"><input type="checkbox">Librairie des Champs-Élysées</li>
+				</ul>
+			</div>
+		</div>
+		<div>
+			<label>Collection: </label>
+			<span>Le Masque S-F</span>
+			<button class="btn btn-link" type="button">Add collection</button>
+			<div>
+				<ul class="list-group">
+					<li class="list-group-item"><input type="radio" name="collection" checked="true">Le Masque S-F</li>
+					<li class="list-group-item"><input type="radio" name="collection">Folio SF</li>
+					<li class="list-group-item"><input type="radio" name="collection">Présence du futur</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</form>

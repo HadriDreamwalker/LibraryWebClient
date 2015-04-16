@@ -1,5 +1,5 @@
 angular.module('Library')
-.controller("CollectionController", ["$scope", "$routeParams", "$http", "$location", function($scope, $routeParams, $http, $location) {
+.controller("CollectionController", ["$scope", "$routeParams", "$http", "$location", "Api", function ($scope, $routeParams, $http, $location, Api) {
 	$scope.collection = null;
 	var id = $routeParams.id;
 	$scope.modify = false;
@@ -10,7 +10,7 @@ angular.module('Library')
 		$scope.modify = true;
 		$scope.collectionNew = angular.copy($scope.collection);
 
-		$http.get("http://192.168.2.10:8080/v1/publishers")
+		Api.getPublishers()
 		.success(function(publishers) {
 			$scope.publishersList = publishers;
 			for(var i = 0; i < $scope.publishersList.length; i++) {
@@ -33,7 +33,7 @@ angular.module('Library')
 			return item._id;
 		});
 
-		$http.put("http://192.168.2.10:8080/v1/collections/" + id, $scope.collectionNew)
+		Api.putCollection(id, $scope.collectionNew)
 			.success(function(collection){
 				$scope.modify = false;
 				$scope.collection = collection;
@@ -48,7 +48,7 @@ angular.module('Library')
 	}
 
 	$scope.deleteCollection = function() {
-		$http.delete("http://192.168.2.10:8080/v1/collections/" + id)
+		Api.deleteCollection(id)
 			.success(function() {
 				$location.path("/collections");
 			})
@@ -57,8 +57,7 @@ angular.module('Library')
 			})
 	}
 
-
-	$http.get("http://192.168.2.10:8080/v1/collections/" + id)
+	Api.getCollection(id)
 		.success(function(collection) {
 			$scope.collection = collection;
 			console.log(collection.publishers[0].name);

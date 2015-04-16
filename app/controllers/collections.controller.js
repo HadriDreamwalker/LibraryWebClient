@@ -1,5 +1,5 @@
 angular.module("Library")
-.controller("CollectionsController", ["$scope", "$http", function($scope, $http) {
+.controller("CollectionsController", ["$scope", "$http", "Api", function($scope, $http, Api) {
 	$scope.form = false;
 	$scope.collection = null;
 	$scope.collections = null;
@@ -13,7 +13,7 @@ angular.module("Library")
 			return item._id;
 		});
 
-		$http.post("http://192.168.2.10:8080/v1/collections", $scope.collection)
+		Api.postCollection($scope.collection)
 			.success(function(collection){
 				$scope.collections.push(collection);
 			})
@@ -36,7 +36,7 @@ angular.module("Library")
 		return finalList;
 	}
 
-	$http.get("http://192.168.2.10:8080/v1/collections")
+	Api.getCollections()
 		.success(function(collections){
 			$scope.collections = collections;
 		})
@@ -44,7 +44,7 @@ angular.module("Library")
 			console.error(reason);
 		});
 
-	$http.get("http://192.168.2.10:8080/v1/publishers")
+	Api.getPublishers()
 			.success(function(publishers){
 				$scope.publishersList = publishers;
 			})

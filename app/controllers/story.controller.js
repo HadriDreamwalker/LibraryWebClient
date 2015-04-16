@@ -11,7 +11,7 @@ angular.module("Library")
 		$scope.modify = true;
 		$scope.storyNew = angular.copy($scope.story);
 
-		$http.get("http://192.168.2.10:8080/v1/authors")
+		Api.getAuthors()
 			.success(function (authors) {
 				$scope.authorsList = authors.map(function (item) {
 					if($scope.authorsList.indexOf(item)) {
@@ -32,7 +32,7 @@ angular.module("Library")
 			return item._id;
 		})
 
-		$http.put("http://192.168.2.10:8080/v1/stories/" + id, $storyNew)
+		Api.putStory(id, $storyNew)
 			.success(function (story) {
 				$scope.story = story;
 				$scope.modify = false;
@@ -47,7 +47,7 @@ angular.module("Library")
 	}
 
 	$scope.deleteStory = function () {
-		$http.delete("http://192.168.2.10:8080/v1/stories/" + id)
+		Api.deleteStory(id);
 			.success(function () {
 				$location.path("/stories/");
 			})
@@ -56,7 +56,8 @@ angular.module("Library")
 			})
 	}
 
-	$http.get("http://192.168.2.10:8080/v1/stories/" + id + "?embed=authors")
+	/*$http.get("http://192.168.2.10:8080/v1/stories/" + id + "?embed=authors")*/
+	Api.getStory(id + "?embed=authors")
 		.success(function (story) {
 			$scope.story = story;
 		})
@@ -64,7 +65,7 @@ angular.module("Library")
 			console.error(reason);
 		})
 
-	$http.get("http://192.168.2.10:8080/v1/authors/")
+	Api.getAuthors()
 		.success(function (authors) {
 			$scope.authorsList = authors;
 		})

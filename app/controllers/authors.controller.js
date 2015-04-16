@@ -1,5 +1,5 @@
 angular.module("Library")
-.controller('AuthorsController', ['$scope', "$http", function($scope, $http){
+.controller('AuthorsController', ['$scope', "$http", "Api", function ($scope, $http, Api){
 	$scope.form = false;
 	$scope.authors = [];
 	$scope.showForm = function(){
@@ -9,7 +9,7 @@ angular.module("Library")
 	$scope.author = {};
 
 	$scope.addAuthor = function() {
-		$http.post("http://192.168.2.10:8080/v1/authors", $scope.author)
+		Api.postAuthor($scope.author)
 			.success(function(author) {
 				$scope.authors.push(author);
 				$scope.author = {};
@@ -19,7 +19,7 @@ angular.module("Library")
 			})
 	};
 
-	$http.get("http://192.168.2.10:8080/v1/authors")
+	Api.getAuthors()
 		.success(function(authors){
 			$scope.authors = authors;
 		})
